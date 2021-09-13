@@ -26,8 +26,8 @@ jobs:
         uses: hashicorp/packer-github-actions@master
         with:
           command: validate
-          arguments: -syntax-only
-          target: packer.pkr.hcl
+          arguments: -syntax-only ubuntu-18.04-amd64.json
+          target: ubuntu 
 
       # build artifact
       - name: Build Artifact
