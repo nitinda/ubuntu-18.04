@@ -32,7 +32,7 @@ jobs:
 
       # validate templates
       - name: virtualbox - packer validate
-        uses: docker://hashicorp/packer:${PACKER_VERSION}
+        uses: docker://hashicorp/packer:latest
         with: 
           args: validate -syntax-only ubuntu/ubuntu-18.04-amd64.json
         env:
@@ -47,9 +47,7 @@ jobs:
           sudo apt-get update
           sudo apt install -y virtualbox linux-headers-generic
           sudo dpkg-reconfigure virtualbox-dkms
-          curl -SL https://releases.hashicorp.com/packer/$PACKER_VERSION/packer_${PACKER_VERSION}_linux_amd64.zip -o packer_linux_amd64.zip
-          unzip packer_linux_amd64.zip
-          ./packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
+          packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
         env:
           PACKER_LOG: 0
 
