@@ -44,7 +44,7 @@ jobs:
           sudo apt-get update
           sudo apt-get upgrade -y
           sudo apt-get install -y git bash openssl curl zip 
-          sudo apt-get install -y build-essential linux-headers-`uname -r` dkms virtualbox virtualbox-dkms virtualbox-guest-additions
+          sudo apt-get install -y build-essential linux-headers-`uname -r` dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso
           packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
         env:
           PACKER_LOG: 0
