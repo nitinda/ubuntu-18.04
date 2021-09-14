@@ -10,6 +10,9 @@ on:
     - main
     paths:
     - .github/workflows/virtualbox.yml
+    - ubuntu/*
+    - ubuntu/*/*
+    - _common/*
 
 jobs:
   packer:
@@ -29,8 +32,8 @@ jobs:
 
       # validate templates
       - name: virtualbox - packer validate
-        uses: actions/checkout@v2
-        with:
+        uses: docker://hashicorp/packer:${PACKER_VERSION}
+        with: 
           args: validate -syntax-only ubuntu/ubuntu-18.04-amd64.json
         env:
           PACKER_LOG: 1
