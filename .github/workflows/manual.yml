@@ -29,7 +29,8 @@ jobs:
           arguments: -syntax-only
           # multiple files, separated by whitespace
           target: ubuntu-18.04-amd64.json
-          target: ubuntu
+        env:
+          PACKER_LOG: 1
 
       # build artifact
       - name: Build Artifact
