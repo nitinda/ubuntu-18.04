@@ -49,6 +49,6 @@ jobs:
           sudo dpkg-reconfigure virtualbox-dkms
           packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
         env:
-          PACKER_LOG: 1
+          PACKER_LOG: 0
 
       # additional steps to process artifacts
