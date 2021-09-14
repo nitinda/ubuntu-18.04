@@ -28,8 +28,8 @@ jobs:
       #     target: ubuntu/ubuntu-18.04-amd64.json
 
       # validate templates
-      - name: Validate Template
-        uses: hashicorp/packer-github-actions@master
+      - name: virtualbox - packer validate
+        uses: actions/checkout@v2
         with:
           command: validate
           arguments: -syntax-only
@@ -47,7 +47,9 @@ jobs:
           sudo apt-get update
           sudo apt install -y virtualbox linux-headers-generic
           sudo dpkg-reconfigure virtualbox-dkms
-          packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
+          curl -SL https://releases.hashicorp.com/packer/$PACKER_VERSION/packer_${PACKER_VERSION}_linux_amd64.zip -o packer_linux_amd64.zip
+          unzip packer_linux_amd64.zip
+          ./packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
         env:
           PACKER_LOG: 0
 
