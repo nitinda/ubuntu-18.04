@@ -28,6 +28,7 @@
         ],
         "boot_wait": "5s",
         "cpus": "{{ user `cpus` }}",
+        "nested_virt": "{{ user `nested_virt` }}",
         "disk_size": "{{user `disk_size`}}",
         "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
         "guest_additions_url": "{{ user `guest_additions_url` }}",
