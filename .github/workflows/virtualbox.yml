@@ -1,9 +1,15 @@
 ---
 
-name: Packer
+name: ubuntu-virtualbox-minimal
+env:
+  PACKER_VERSION: 1.7.4
 
 on:
   push:
+    branches:
+    - master
+    paths:
+    - .github/workflows/virtualbox.yml
 
 jobs:
   packer:
@@ -33,12 +39,15 @@ jobs:
           PACKER_LOG: 1
 
       # build artifact
-      - name: Build Artifact
-        uses: hashicorp/packer-github-actions@master
-        with:
-          command: build
-          arguments: "-color=false -on-error=abort"
-          target: ubuntu/ubuntu-18.04-amd64.json
+      - name: virtualbox - packer build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git bash openssl curl zip 
+          sudo add-apt-repository multiverse 
+          sudo apt-get update
+          sudo apt install -y virtualbox linux-headers-generic
+          sudo dpkg-reconfigure virtualbox-dkms
+          packer build -color=false -on-error=abort ubuntu/ubuntu-18.04-amd64.json
         env:
           PACKER_LOG: 1
 
