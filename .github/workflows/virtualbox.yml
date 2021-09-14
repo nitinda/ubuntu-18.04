@@ -45,11 +45,8 @@ jobs:
           sudo apt-get upgrade -y
           sudo apt-get install -y git bash openssl curl zip 
           sudo apt-get install -y build-essential linux-headers-`uname -r` dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso
-          
-          curl -SL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o packer_linux_amd64.zip
-          unzip packer_linux_amd64.zip
-          ./packer build ubuntu/ubuntu-18.04-amd64.json
+          packer build ubuntu/ubuntu-18.04-amd64.json
         env:
-          PACKER_LOG: 1
+          PACKER_LOG: 0
 
       # additional steps to process artifacts
