@@ -27,7 +27,9 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: ubuntu/.
+          # multiple files, separated by whitespace
+          target: ubuntu-18.04-amd64.json
+          target: ubuntu
 
       # build artifact
       - name: Build Artifact
