@@ -28,7 +28,7 @@ jobs:
           command: validate
           arguments: -syntax-only
           # multiple files, separated by whitespace
-          target: ubuntu-18.04-amd64.json
+          target: ubuntu/ubuntu-18.04-amd64.json
         env:
           PACKER_LOG: 1
 
