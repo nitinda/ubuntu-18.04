@@ -12,15 +12,18 @@ jobs:
           command: packer validate ./ubuntu/ubuntu-18.04-amd64.json
   build-virtualbox:
     docker:
-      - image: hashicorp/packer:full-1.7.5
+      - image: ubuntu:18.04
     working_directory: ~/ubuntu
     steps:
       - checkout
       - attach_workspace:
           at: ~/ubuntu
-      - run:
-          name: Build virtualbox
-          command: sudo apt-get update && sudo apt-get upgrade -y && packer build ./ubuntu/ubuntu-18.04-amd64.json
+      - run: |
+          sudo apt-get update
+          sudo apt-get upgrade -y
+          sudo apt-get install -y git bash openssl curl zip build-essential linux-headers-`uname -r` dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso
+          sudo apt-get install -y cpu-checker
+          sudo kvm-ok
       - store_artifacts:
           path: manifest-virtualbox.json
 
