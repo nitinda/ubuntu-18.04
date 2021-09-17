@@ -21,7 +21,7 @@ jobs:
       - run: |
           sudo apt-get update
           sudo apt-get upgrade -y
-          sudo apt-get install -y git bash openssl curl zip build-essential linux-headers dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso
+          sudo apt-get install -y git bash openssl curl zip build-essential dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso
           sudo apt-get install -y cpu-checker
           sudo kvm-ok
       - store_artifacts:
