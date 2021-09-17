@@ -19,8 +19,8 @@ jobs:
       - attach_workspace:
           at: ~/ubuntu
       - run:
-          name: Build snowflake
-          command: packer --version
+          name: Build virtualbox
+          command: packer build ubuntu-18.04-amd64.json
       - store_artifacts:
           path: manifest-virtualbox.json
 
