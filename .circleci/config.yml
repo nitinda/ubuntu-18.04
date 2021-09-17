@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   validate:
     docker:
-      - image: hashicorp/packer:1.7.5
+      - image: hashicorp/packer:full-1.7.5
     working_directory: ~/packer
     steps:
       - checkout
@@ -12,7 +12,7 @@ jobs:
           command: packer validate ./ubuntu/ubuntu-18.04-amd64.json
   build-virtualbox:
     docker:
-      - image: hashicorp/packer:1.1.1
+      - image: hashicorp/packer:full-1.7.5
     working_directory: ~/ubuntu
     steps:
       - checkout
