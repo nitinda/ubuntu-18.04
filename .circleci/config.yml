@@ -12,15 +12,12 @@ jobs:
           command: packer validate ./ubuntu/ubuntu-18.04-amd64.json
   build-virtualbox:
     docker:
-      - image: ubuntu:18.04
+      - image: cimg/base:2021.07
     working_directory: ~/ubuntu
     steps:
       - checkout
       - attach_workspace:
           at: ~/ubuntu
-          
-      - run: apt-get install -y sudo
-      - run: ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
       - run: |
           sudo apt-get update
           sudo apt-get upgrade -y
