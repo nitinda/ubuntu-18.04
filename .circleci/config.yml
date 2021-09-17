@@ -22,10 +22,14 @@ jobs:
           sudo apt-get update
           sudo apt-get upgrade -y
           sudo apt-get install -y git bash openssl curl zip build-essential dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso linux-headers-aws
+          uname -r
+          sudo apt-get install linux-headers-generic
+          sudo dpkg-reconfigure virtualbox-dkms
           PACKER_LATEST_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/packer | jq -r -M '.current_version')
           curl -s "https://releases.hashicorp.com/packer/1.7.5/packer_1.7.5_linux_amd64.zip" --output /tmp/packer_linux_amd64.zip
           sudo unzip -o /tmp/packer_linux_amd64.zip -d /usr/local/bin/
           packer build -debug ./ubuntu/ubuntu-18.04-amd64.json
+          
       - store_artifacts:
           path: manifest-virtualbox.json
 
