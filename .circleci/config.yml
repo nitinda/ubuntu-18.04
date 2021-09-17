@@ -20,7 +20,7 @@ jobs:
           at: ~/ubuntu
       - run:
           name: Build virtualbox
-          command: packer build ubuntu-18.04-amd64.json
+          command: packer build ./ubuntu/ubuntu-18.04-amd64.json
       - store_artifacts:
           path: manifest-virtualbox.json
 
