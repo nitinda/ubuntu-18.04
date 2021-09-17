@@ -22,7 +22,9 @@ jobs:
           sudo apt-get update
           sudo apt-get upgrade -y
           sudo apt-get install -y git bash openssl curl zip build-essential dkms virtualbox virtualbox-dkms virtualbox-guest-additions-iso linux-headers-aws
+          echo "====== uname ======="
           uname -r
+          echo "===================="
           sudo apt-get install linux-headers-generic
           sudo dpkg-reconfigure virtualbox-dkms
           sudo dpkg-reconfigure virtualbox
