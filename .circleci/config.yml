@@ -20,7 +20,7 @@ jobs:
           at: ~/ubuntu
       - run:
           name: Build virtualbox
-          command: export PACKER_LOG=1 && packer build ./ubuntu/ubuntu-18.04-amd64.json
+          command: sudo apt-get update && sudo apt-get upgrade -y && packer build ./ubuntu/ubuntu-18.04-amd64.json
       - store_artifacts:
           path: manifest-virtualbox.json
 
