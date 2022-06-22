@@ -13,6 +13,7 @@ on:
     - ubuntu/*
     - ubuntu/*/*
     - _common/*
+    - README.md
 
 jobs:
   packer:
